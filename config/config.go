@@ -17,6 +17,7 @@ type AppConfig struct {
 		DefaultSize int `mapstructure:"defaultSize"`
 		MaxSize     int `mapstructure:"max_size"`
 	} `mapstructure:"pagination"`
+	Port string `mapstructure:"port"`
 }
 
 type DBConfig struct {

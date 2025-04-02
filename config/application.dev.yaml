@@ -1,23 +1,24 @@
 app:
   env: "dev"
-  name: "go-mall"
+  name: "back"
   log:
-    path: "/Users/lyydsheep/workspace/Go/projects/go-mall/log/go-mall.log"
+    path: "./log/back.log"
     maxSize: 100
     maxAge: 60
   pagination:
     defaultSize: 20
     maxSize: 100
+  port: 8080
 database:
   master:
     type: "mysql"
-    dsn: "root:super@tcp(127.0.0.1:33306)/go_mall?charset=utf8mb4&parseTime=True&loc=Local"
+    dsn: "root:super@tcp(127.0.0.1:33306)/back?charset=utf8mb4&parseTime=True&loc=Local"
     maxOpen: 100
     maxIdle: 10
     maxLifeTime: 60
   slave:
     type: "mysql"
-    dsn: "root:super@tcp(127.0.0.1:33306)/go_mall?charset=utf8mb4&parseTime=True&loc=Local"
+    dsn: "root:super@tcp(127.0.0.1:33306)/back?charset=utf8mb4&parseTime=True&loc=Local"
     maxOpen: 100
     maxIdle: 10
     maxLifeTime: 60

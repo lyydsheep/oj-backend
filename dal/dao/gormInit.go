@@ -1,6 +1,10 @@
 package dao
 
 import (
+	"back/config"
+	"back/dal/model"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"time"
 )
 

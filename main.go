@@ -1,5 +1,14 @@
 package main
 
+import (
+	"back/common/enum"
+	log "back/common/logger"
+	"back/config"
+	"back/dal/dao"
+	"fmt"
+	"github.com/gin-gonic/gin"
+)
+
 func init() {
 	config.InitConfig()
 	log.InitLogger()
@@ -12,7 +21,7 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	g := InitializeApp()
-	if err := g.Run("localhost:8080"); err != nil {
+	if err := g.Run(fmt.Sprintf(":%s", config.App.Port)); err != nil {
 		panic(err)
 	}
 }
