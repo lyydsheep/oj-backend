@@ -24,6 +24,7 @@ type User struct {
 	CreateTime   time.Time `gorm:"column:create_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:创建时间" json:"create_time"`   // 创建时间
 	UpdateTime   time.Time `gorm:"column:update_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:更新时间" json:"update_time"`   // 更新时间
 	IsDelete     int32     `gorm:"column:is_delete;type:int;not null;comment:是否删除" json:"is_delete"`                                      // 是否删除
+	UID          string    `gorm:"column:uid;type:varchar(32);not null;comment:uid" json:"uid"`                                           // uid
 }
 
 // TableName User's table name

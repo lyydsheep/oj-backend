@@ -33,7 +33,7 @@ func newQuestionSubmit(db *gorm.DB, opts ...gen.DOOption) questionSubmit {
 	_questionSubmit.JudgeInfo = field.NewString(tableName, "judge_info")
 	_questionSubmit.Status = field.NewInt32(tableName, "status")
 	_questionSubmit.QuestionID = field.NewInt64(tableName, "question_id")
-	_questionSubmit.UserID = field.NewInt64(tableName, "user_id")
+	_questionSubmit.UserID = field.NewString(tableName, "user_id")
 	_questionSubmit.CreateTime = field.NewTime(tableName, "create_time")
 	_questionSubmit.UpdateTime = field.NewTime(tableName, "update_time")
 	_questionSubmit.IsDelete = field.NewInt32(tableName, "is_delete")
@@ -54,10 +54,10 @@ type questionSubmit struct {
 	JudgeInfo    field.String // 判题信息（json 对象）
 	Status       field.Int32  // 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
 	QuestionID   field.Int64  // 题目 id
-	UserID       field.Int64  // 创建用户 id
-	CreateTime   field.Time   // 创建时间
-	UpdateTime   field.Time   // 更新时间
-	IsDelete     field.Int32  // 是否删除
+	UserID       field.String
+	CreateTime   field.Time  // 创建时间
+	UpdateTime   field.Time  // 更新时间
+	IsDelete     field.Int32 // 是否删除
 
 	fieldMap map[string]field.Expr
 }
@@ -80,7 +80,7 @@ func (q *questionSubmit) updateTableName(table string) *questionSubmit {
 	q.JudgeInfo = field.NewString(table, "judge_info")
 	q.Status = field.NewInt32(table, "status")
 	q.QuestionID = field.NewInt64(table, "question_id")
-	q.UserID = field.NewInt64(table, "user_id")
+	q.UserID = field.NewString(table, "user_id")
 	q.CreateTime = field.NewTime(table, "create_time")
 	q.UpdateTime = field.NewTime(table, "update_time")
 	q.IsDelete = field.NewInt32(table, "is_delete")

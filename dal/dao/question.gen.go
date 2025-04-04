@@ -38,7 +38,7 @@ func newQuestion(db *gorm.DB, opts ...gen.DOOption) question {
 	_question.JudgeConfig = field.NewString(tableName, "judge_config")
 	_question.ThumbNum = field.NewInt32(tableName, "thumb_num")
 	_question.FavourNum = field.NewInt32(tableName, "favour_num")
-	_question.UserID = field.NewInt64(tableName, "user_id")
+	_question.UserID = field.NewString(tableName, "user_id")
 	_question.CreateTime = field.NewTime(tableName, "create_time")
 	_question.UpdateTime = field.NewTime(tableName, "update_time")
 	_question.IsDelete = field.NewInt32(tableName, "is_delete")
@@ -64,10 +64,10 @@ type question struct {
 	JudgeConfig field.String // 判题配置（json 对象）
 	ThumbNum    field.Int32  // 点赞数
 	FavourNum   field.Int32  // 收藏数
-	UserID      field.Int64  // 创建用户 id
-	CreateTime  field.Time   // 创建时间
-	UpdateTime  field.Time   // 更新时间
-	IsDelete    field.Int32  // 是否删除
+	UserID      field.String
+	CreateTime  field.Time  // 创建时间
+	UpdateTime  field.Time  // 更新时间
+	IsDelete    field.Int32 // 是否删除
 
 	fieldMap map[string]field.Expr
 }
@@ -95,7 +95,7 @@ func (q *question) updateTableName(table string) *question {
 	q.JudgeConfig = field.NewString(table, "judge_config")
 	q.ThumbNum = field.NewInt32(table, "thumb_num")
 	q.FavourNum = field.NewInt32(table, "favour_num")
-	q.UserID = field.NewInt64(table, "user_id")
+	q.UserID = field.NewString(table, "user_id")
 	q.CreateTime = field.NewTime(table, "create_time")
 	q.UpdateTime = field.NewTime(table, "update_time")
 	q.IsDelete = field.NewInt32(table, "is_delete")

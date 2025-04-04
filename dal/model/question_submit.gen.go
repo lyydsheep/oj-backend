@@ -18,10 +18,10 @@ type QuestionSubmit struct {
 	JudgeInfo    *string   `gorm:"column:judge_info;type:text;comment:判题信息（json 对象）" json:"judge_info"`                                      // 判题信息（json 对象）
 	Status       int32     `gorm:"column:status;type:int;not null;comment:判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）" json:"status"`                // 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
 	QuestionID   int64     `gorm:"column:question_id;type:bigint;not null;index:idx_questionId,priority:1;comment:题目 id" json:"question_id"` // 题目 id
-	UserID       int64     `gorm:"column:user_id;type:bigint;not null;index:idx_userId,priority:1;comment:创建用户 id" json:"user_id"`           // 创建用户 id
-	CreateTime   time.Time `gorm:"column:create_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:创建时间" json:"create_time"`      // 创建时间
-	UpdateTime   time.Time `gorm:"column:update_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:更新时间" json:"update_time"`      // 更新时间
-	IsDelete     int32     `gorm:"column:is_delete;type:int;not null;comment:是否删除" json:"is_delete"`                                         // 是否删除
+	UserID       string    `gorm:"column:user_id;type:varchar(32);not null;index:idx_userId,priority:1" json:"user_id"`
+	CreateTime   time.Time `gorm:"column:create_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:创建时间" json:"create_time"` // 创建时间
+	UpdateTime   time.Time `gorm:"column:update_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:更新时间" json:"update_time"` // 更新时间
+	IsDelete     int32     `gorm:"column:is_delete;type:int;not null;comment:是否删除" json:"is_delete"`                                    // 是否删除
 }
 
 // TableName QuestionSubmit's table name

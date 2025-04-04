@@ -39,6 +39,7 @@ func newUser(db *gorm.DB, opts ...gen.DOOption) user {
 	_user.CreateTime = field.NewTime(tableName, "create_time")
 	_user.UpdateTime = field.NewTime(tableName, "update_time")
 	_user.IsDelete = field.NewInt32(tableName, "is_delete")
+	_user.UID = field.NewString(tableName, "uid")
 
 	_user.fillFieldMap()
 
@@ -62,6 +63,7 @@ type user struct {
 	CreateTime   field.Time   // 创建时间
 	UpdateTime   field.Time   // 更新时间
 	IsDelete     field.Int32  // 是否删除
+	UID          field.String // uid
 
 	fieldMap map[string]field.Expr
 }
@@ -90,6 +92,7 @@ func (u *user) updateTableName(table string) *user {
 	u.CreateTime = field.NewTime(table, "create_time")
 	u.UpdateTime = field.NewTime(table, "update_time")
 	u.IsDelete = field.NewInt32(table, "is_delete")
+	u.UID = field.NewString(table, "uid")
 
 	u.fillFieldMap()
 
@@ -114,7 +117,7 @@ func (u *user) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (u *user) fillFieldMap() {
-	u.fieldMap = make(map[string]field.Expr, 12)
+	u.fieldMap = make(map[string]field.Expr, 13)
 	u.fieldMap["id"] = u.ID
 	u.fieldMap["user_account"] = u.UserAccount
 	u.fieldMap["user_password"] = u.UserPassword
@@ -127,6 +130,7 @@ func (u *user) fillFieldMap() {
 	u.fieldMap["create_time"] = u.CreateTime
 	u.fieldMap["update_time"] = u.UpdateTime
 	u.fieldMap["is_delete"] = u.IsDelete
+	u.fieldMap["uid"] = u.UID
 }
 
 func (u user) clone(db *gorm.DB) user {
