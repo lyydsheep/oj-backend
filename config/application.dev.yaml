@@ -1,8 +1,8 @@
 app:
   env: "dev"
-  name: "back"
+  name: "oj"
   log:
-    path: "./log/back.log"
+    path: "./log/oj.log"
     maxSize: 100
     maxAge: 60
   pagination:
@@ -12,13 +12,13 @@ app:
 database:
   master:
     type: "mysql"
-    dsn: "root:super@tcp(127.0.0.1:33306)/back?charset=utf8mb4&parseTime=True&loc=Local"
+    dsn: "%s:%s@tcp(%s:3306)/oj?charset=utf8mb4&parseTime=True&loc=Local"
     maxOpen: 100
     maxIdle: 10
     maxLifeTime: 60
   slave:
     type: "mysql"
-    dsn: "root:super@tcp(127.0.0.1:33306)/back?charset=utf8mb4&parseTime=True&loc=Local"
+    dsn: "%s:%s@tcp(%s:3306)/oj?charset=utf8mb4&parseTime=True&loc=Local"
     maxOpen: 100
     maxIdle: 10
     maxLifeTime: 60

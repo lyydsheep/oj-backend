@@ -1,9 +1,10 @@
 module back
 
-go 1.22.6
+go 1.24.1
 
 require (
 	github.com/gin-gonic/gin v1.10.0
+	github.com/google/wire v0.6.0
 	github.com/jinzhu/copier v0.4.0
 	github.com/spf13/viper v1.20.1
 	go.uber.org/zap v1.27.0

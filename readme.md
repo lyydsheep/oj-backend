@@ -10,6 +10,8 @@
 - 可追踪、可定位的日志系统
 - 后续补充O_O)
 
+详细设计可见 [设计文档（太菜了QwQ](https://www.yuque.com/lyydsheep/dlgxi4/xadmig8twf5sfebn?singleDoc)
+
 ## 快速开始
 还在建设中=-=
 ```bash

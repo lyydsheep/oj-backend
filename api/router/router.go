@@ -1,13 +1,18 @@
 package router
 
+import (
+	"back/api/controller"
+	"github.com/gin-gonic/gin"
+)
+
 // 路由注册相关的, 都放在router 包下
 
-func RegisterRoutersAndMiddleware(build *controller.BuildController, fs ...gin.HandlerFunc) *gin.Engine {
+func RegisterRoutersAndMiddleware(q *controller.QuestionController, fs ...gin.HandlerFunc) *gin.Engine {
 	s := gin.Default()
 	RegisterMiddleware(s, fs...)
 
-	g := s.Group("/")
-	registerBuild(g, build)
+	g := s.Group("/api/v1")
+	registerQuestion(g, q)
 	return s
 }
 

@@ -3,6 +3,7 @@ package app
 import (
 	"back/common/errcode"
 	log "back/common/logger"
+	"errors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -41,12 +42,16 @@ func (r *response) SuccessOk() {
 	r.Success("")
 }
 
-func (r *response) Error(err *errcode.AppError) {
-	r.Code = err.GetCode()
-	r.Msg = err.GetMsg()
+func (r *response) Error(err error) {
+	newErr := errcode.ErrServer.Clone()
+	if !errors.As(err, &newErr) {
+		newErr = newErr.WithCause(err)
+	}
+	r.Code = newErr.GetCode()
+	r.Msg = newErr.GetMsg()
 	if _, ok := r.c.Get("traceId"); ok {
 		r.RequestId = r.c.GetString("traceId")
 	}
 	log.New(r.c).Error("api_response_err", "err", err)
-	r.c.JSON(err.HttpStatusCode(), r)
+	r.c.JSON(newErr.HttpStatusCode(), r)
 }

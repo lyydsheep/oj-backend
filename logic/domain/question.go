@@ -82,13 +82,8 @@ func ConvertJudgeCase(caseStr string) JudgeCase {
 }
 
 type JudgeConfig struct {
-	TimeLimit      int32  `json:"time_limit"`
-	MemoryLimit    int32  `json:"memory_limit"`
-	StackLimit     int32  `json:"stack_limit"`
-	OutputLimit    int32  `json:"output_limit"`
-	SecurityLevel  string `json:"security_level"`
-	CompileCommand string `json:"compile_command"`
-	RunCommand     string `json:"run_command"`
+	TimeLimit   int32 `json:"time_limit"`
+	MemoryLimit int32 `json:"memory_limit"`
 }
 
 func (j *JudgeConfig) String() string {

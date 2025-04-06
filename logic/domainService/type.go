@@ -11,12 +11,8 @@ type UserDomainService interface {
 }
 
 type QuestionDomainService interface {
-	GetQuestionByTitle(context.Context, string) (*domain.Question, error)
 	GetQuestionById(context.Context, int64) (*domain.Question, error)
-	CreateQuestion(context.Context, *domain.Question) (*domain.Question, error)
-	EditQuestion(context.Context, *domain.Question) (*domain.Question, error)
-	// DeleteQuestion 根据id删除题目
-	DeleteQuestion(context.Context, int64) (bool, error)
+	StoreQuestion(context.Context, *domain.Question) (int64, error)
 }
 
 type QuestionSubmitDomainService interface {

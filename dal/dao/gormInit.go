@@ -2,7 +2,6 @@ package dao
 
 import (
 	"back/config"
-	"back/dal/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"
@@ -13,20 +12,17 @@ var (
 	dbSlave  *gorm.DB
 )
 
-func DB() *gorm.DB {
-	return dbSlave
+func DB() *Query {
+	return Use(dbSlave)
 }
 
-func DBMaster() *gorm.DB {
-	return dbMaster
+func DBMaster() *Query {
+	return Use(dbMaster)
 }
 
 func InitDB() {
 	dbMaster = initDB(&config.DB.Master)
 	dbSlave = initDB(&config.DB.Slave)
-	if err := dbMaster.AutoMigrate(&model.DemoOrder{}); err != nil {
-		panic(err)
-	}
 }
 
 func initDB(option *config.DBConfigOptions) *gorm.DB {

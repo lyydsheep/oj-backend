@@ -1,8 +1,11 @@
 package router
 
-func registerBuild(s *gin.RouterGroup, build *controller.BuildController) {
-	g := s.Group("/build")
-	g.GET("/pagination", build.TestPagination)
-	g.GET("/test_gorm_log", build.TestGormLog)
-	g.POST("/test_create", build.CreateDemoOrder)
+import (
+	"back/api/controller"
+	"github.com/gin-gonic/gin"
+)
+
+func registerQuestion(s *gin.RouterGroup, q *controller.QuestionController) {
+	g := s.Group("/question")
+	g.POST("", q.CreateQuestion)
 }

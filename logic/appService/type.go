@@ -1,10 +1,10 @@
 package appService
 
 import (
+	"back/api/request"
 	"context"
 )
 
-type DemoAppService interface {
-	GetAllIdentities(c context.Context) ([]int64, error)
-	CreateDemoOrder(c context.Context, order *request.DemoOrderReq) (*reply.DemoOrder, error)
+type QuestionAppService interface {
+	CreateQuestion(ctx context.Context, question *request.CreateRequest) (int64, error)
 }

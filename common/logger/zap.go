@@ -41,10 +41,6 @@ func InitLogger() {
 					zapcore.AddSync(
 						zapcore.NewMultiWriteSyncer(
 							fileWriteSyncer, zapcore.AddSync(os.Stdout))))), zap.DebugLevel))
-
-		// 需要确保 fileWriter 线程安全
-		//cores = append(cores, zapcore.NewCore(encoder, zapcore.AddSync(os.Stdout), zap.DebugLevel),
-		//	zapcore.NewCore(encoder, fileWriteSyncer, zap.DebugLevel))
 	}
 	// NewTee函数将多个core合并为一个，这样可以将日志输出到多个目的地
 	core := zapcore.NewTee(cores...)

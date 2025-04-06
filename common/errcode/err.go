@@ -102,6 +102,21 @@ func (a *AppError) WithCause(err error) *AppError {
 	return a
 }
 
+func (a *AppError) Clone() *AppError {
+	return &AppError{
+		code:     a.code,
+		msg:      a.msg,
+		occurred: a.occurred,
+		cause:    a.cause,
+	}
+}
+
+func (a *AppError) AppendMsg(msg string) *AppError {
+	n := a.Clone()
+	n.msg = fmt.Sprintf("%s, %s", a.msg, msg)
+	return n
+}
+
 func getErrorInfo() string {
 	pc, file, line, _ := runtime.Caller(2)
 	funcName := runtime.FuncForPC(pc).Name()
