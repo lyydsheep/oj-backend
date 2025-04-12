@@ -2,7 +2,7 @@ package request
 
 import "back/logic/domain"
 
-type CreateRequest struct {
+type CreateQuestion struct {
 	Title     *string            `gorm:"column:title;type:varchar(512);comment:标题" json:"title"`              // 标题
 	Content   *string            `gorm:"column:content;type:text;comment:内容" json:"content"`                  // 内容
 	Tags      []domain.Tag       `gorm:"column:tags;type:varchar(1024);comment:标签列表（json 数组）" json:"tags"`    // 标签列表（json 数组）

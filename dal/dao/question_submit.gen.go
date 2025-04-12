@@ -52,7 +52,7 @@ type questionSubmit struct {
 	CodeLanguage field.String // 编程语言
 	Code         field.String // 用户代码
 	JudgeInfo    field.String // 判题信息（json 对象）
-	Status       field.Int32  // 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
+	Status       field.Int32  // 判题状态（0 - 待判题、1 - 判题中、2 - 判题结束）
 	QuestionID   field.Int64  // 题目 id
 	UserID       field.String
 	CreateTime   field.Time  // 创建时间

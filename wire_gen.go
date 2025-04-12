@@ -11,8 +11,8 @@ import (
 	"back/api/router"
 	"back/common/middleware"
 	"back/dal/dao"
-	"back/logic/appService"
-	"back/logic/domainService"
+	"back/logic/repository"
+	"back/logic/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,10 +20,13 @@ import (
 
 func InitializeApp() *gin.Engine {
 	query := dao.DBMaster()
-	questionDomainService := domainService.NewQuestionDomainServiceV1(query)
-	questionAppService := appService.NewQuestionAppServiceV1(questionDomainService)
-	questionController := controller.NewQuestionController(questionAppService)
+	questionRepository := repository.NewQuestionRepositoryV1(query)
+	questionService := service.NewQuestionServiceV1(questionRepository)
+	questionController := controller.NewQuestionController(questionService)
+	userRepository := repository.NewUserRepositoryV1(query)
+	userService := service.NewUserServiceV1(userRepository)
+	userController := controller.NewUserController(userService)
 	v := middleware.GetHandlerFunc()
-	engine := router.RegisterRoutersAndMiddleware(questionController, v...)
+	engine := router.RegisterRoutersAndMiddleware(questionController, userController, v...)
 	return engine
 }

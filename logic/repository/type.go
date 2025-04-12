@@ -1,21 +1,22 @@
-package domainService
+package repository
 
 import (
 	"back/logic/domain"
 	"context"
 )
 
-type UserDomainService interface {
-	GetUser(context.Context, string) (*domain.User, error)
-	CreateUser(context.Context, *domain.User) (*domain.User, error)
+type UserRepository interface {
+	GetUserByUid(context.Context, string) (*domain.User, error)
+	StoreUser(context.Context, *domain.User) error
+	GetUserByAccount(context.Context, string) (*domain.User, error)
 }
 
-type QuestionDomainService interface {
+type QuestionRepository interface {
 	GetQuestionById(context.Context, int64) (*domain.Question, error)
 	StoreQuestion(context.Context, *domain.Question) (int64, error)
 }
 
-type QuestionSubmitDomainService interface {
+type QuestionSubmitRepository interface {
 	CreateQuestionSubmit(context.Context, *domain.QuestionSubmit) (*domain.QuestionSubmit, error)
 	GetQuestionSubmitById(context.Context, int64) (*domain.QuestionSubmit, error)
 	GetQuestionSubmitListByUserId(context.Context, int64) ([]domain.QuestionSubmit, error)

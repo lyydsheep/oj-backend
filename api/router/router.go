@@ -7,12 +7,13 @@ import (
 
 // 路由注册相关的, 都放在router 包下
 
-func RegisterRoutersAndMiddleware(q *controller.QuestionController, fs ...gin.HandlerFunc) *gin.Engine {
+func RegisterRoutersAndMiddleware(q *controller.QuestionController, u *controller.UserController, fs ...gin.HandlerFunc) *gin.Engine {
 	s := gin.Default()
 	RegisterMiddleware(s, fs...)
 
 	g := s.Group("/api/v1")
 	registerQuestion(g, q)
+	registerUser(g, u)
 	return s
 }
 

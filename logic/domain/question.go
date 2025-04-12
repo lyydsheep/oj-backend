@@ -50,8 +50,8 @@ func (t *Tag) String() string {
 	return string(jsonStr)
 }
 
-func ConvertTag(tag string) Tag {
-	var t Tag
+func ConvertTag(tag string) []Tag {
+	var t []Tag
 	err := json.Unmarshal([]byte(tag), &t)
 	if err != nil {
 		panic(err)
@@ -72,8 +72,8 @@ func (j *JudgeCase) String() string {
 	return string(jsonStr)
 }
 
-func ConvertJudgeCase(caseStr string) JudgeCase {
-	var jc JudgeCase
+func ConvertJudgeCases(caseStr string) []JudgeCase {
+	var jc []JudgeCase
 	err := json.Unmarshal([]byte(caseStr), &jc)
 	if err != nil {
 		panic(err)

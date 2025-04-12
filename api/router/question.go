@@ -8,4 +8,5 @@ import (
 func registerQuestion(s *gin.RouterGroup, q *controller.QuestionController) {
 	g := s.Group("/question")
 	g.POST("", q.CreateQuestion)
+	g.GET("", q.GetQuestion)
 }

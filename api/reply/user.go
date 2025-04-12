@@ -1,4 +1,4 @@
-package domain
+package reply
 
 type User struct {
 	UserAccount  string `gorm:"column:user_account;type:varchar(256);not null;comment:账号" json:"user_account"`                         // 账号
